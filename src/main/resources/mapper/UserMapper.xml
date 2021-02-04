@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yetao.blog.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.yetao.blog.entity.User">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="role" jdbcType="VARCHAR" property="role" />
+        <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="sign" jdbcType="VARCHAR" property="sign" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="reg_ip" jdbcType="VARCHAR" property="regIp" />
+        <result column="login_ip" jdbcType="INTEGER" property="loginIp" />
+    </resultMap>
+
+    <select id="init" resultType="java.lang.Integer">
+        select count(*) from tb_user
+    </select>
+    <select id="login" resultType="com.yetao.blog.entity.User">
+        select username, password from tb_user where username = #{username} and password = #{password}
+    </select>
+
+</mapper>
